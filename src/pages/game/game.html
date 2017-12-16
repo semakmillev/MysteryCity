@@ -1,0 +1,118 @@
+<!--
+  Generated template for the Game page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title style="text-align: center" center>{{this.title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content overlap>
+  <ion-item text-center>{{this.progress}}</ion-item>
+  <div *ngIf="codeValue=='TECH_FINISH'">
+    <p text-center>Спасибо, что прошли игру!</p>
+    <p text-center>Мы будем рады вашей оценке за неё:</p>
+    <rating [(ngModel)]="rate"
+            readOnly="false"
+            max="5"
+            emptyStarIconName="star-outline"
+            halfStarIconName="star-half"
+            starIconName="star"
+            default="5"
+            ng-reflect-model="4"
+            nullable="false" text-center></rating>
+    <p style="text-align: justify">
+      Друзья, вы прошли квест, и у вас есть возможность оказать посильную помощь нашему проекту.
+      Благодаря вам мы сможем создавать больше увлекательных бесплатных квестов на самые различные темы.
+      Вместе мы сделаем мир интересней!
+    </p>
+    <ion-item text-center>
+      <button ion-button (click)="setRating()">Оценить!</button>
+    </ion-item>
+    <ion-grid text-center>
+      <ion-row>
+        <ion-col>
+          <form ngNoForm action="https://money.yandex.ru/eshop.xml" method="post">
+            <input name="shopId" value="75489" type="hidden"/>
+            <input name="scid" value="73127" type="hidden"/>
+            <input name="sum" value="100" type="hidden">
+            <input name="paymentType" value="AC" type="hidden"/>
+            <input name="orderNumber" value="" type="hidden"/>
+            <button ion-button type="submit" class="yandexPayment">
+              <div style="color:black">100</div> <div style="color:red">₽</div>
+            </button>
+          </form>
+        </ion-col>
+        <ion-col>
+          <form ngNoForm action="https://money.yandex.ru/eshop.xml" method="post">
+            <input name="shopId" value="75489" type="hidden"/>
+            <input name="scid" value="73127" type="hidden"/>
+            <input name="sum" value="200" type="hidden">
+            <input name="paymentType" value="AC" type="hidden"/>
+            <button ion-button type="submit" class="yandexPayment">
+              <div style="color:black">200</div><div style="color:red">₽</div>
+            </button>
+          </form>
+        </ion-col>
+        <ion-col>
+          <form ngNoForm action="https://money.yandex.ru/eshop.xml" method="post">
+            <input name="shopId" value="75489" type="hidden"/>
+            <input name="scid" value="73127" type="hidden"/>
+            <input name="sum" value="500" type="hidden">
+            <input name="gameId" value="" type="hidden"/>
+            <input name="paymentType" value="AC" type="hidden"/>
+            <button ion-button type="submit" class="yandexPayment">
+              <div style="color:black">500</div> <div style="color:red">₽</div>
+            </button>
+          </form>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-item text-center>
+      <button ion-button (click)="restart()"
+              style="color:darkorange; border-color: darkorange" outline>Пройти заново!</button>
+    </ion-item>
+    </div>
+  <div *ngIf="codeValue!='TECH_FINISH'">
+    <ion-item text-wrap>
+      <div [innerHtml]="taskHtml" style="text-align: justify;"></div>
+    </ion-item>
+    <div style="text-align: justify">
+      <ion-item *ngFor="let hint of hints" text-wrap>
+        <p><b>Подсказка {{hints.indexOf(hint) + 1}}</b></p>
+        <p [innerHtml]="prepareHtml(hint.HINT_TEXT)">
+
+        </p>
+      </ion-item>
+    </div>
+  </div>
+  <div text-center>
+    <button ion-button id="buttonHelp"
+            style="color:darkorange; border-color: darkorange"
+            *ngIf="codeType=='SIMPLE'&&codeValue==''" (click)="takeHint()" outline>Подскажите мне!
+    </button>
+  </div>
+
+</ion-content>
+<ion-footer position="bottom">
+
+  <ion-toolbar>
+  <ion-item *ngIf="codeType=='SIMPLE'&&codeValue==''">
+    <ion-label color="primary" style="color: darkorange">Ответ:</ion-label>
+    <ion-input [(ngModel)]="inputCodeValue"></ion-input>
+    <button ion-button item-right clear icon-only (click)="checkCodeClick()">
+      <ion-icon name="arrow-forward" dark style="color: darkorange"></ion-icon>
+    </button>
+  </ion-item>
+  <ion-item *ngIf="codeType=='SIMPLE'&&codeValue=='TECH_NEXT'">
+    <button ion-button (click)="checkCode('TECH_NEXT')">Дальше</button>
+  </ion-item>
+  </ion-toolbar>
+</ion-footer>
+

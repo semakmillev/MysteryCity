@@ -1,0 +1,41 @@
+<!--
+  Generated template for the GameList page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="text-align: center" center>Город загадок</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngFor="let game of games">
+    <ion-card-content>
+      <ion-card-title>
+        {{ game._NAME }}
+      </ion-card-title>
+      <div [innerHtml]="prepareHtml(game._COMMENTS)"></div>
+      <p><b>Продолжительность: </b> {{ game.ESTIMATED_TIME_DISTANCE }} </p>
+      <p><b>Уровень сложности: </b>{{ game.DIFFICULTY }}</p>
+      <p><b>Точка старта: </b> {{ game.START_PLACE }}</p>
+      </ion-card-content>
+      <button ion-button style="background-color:darkorange" (click)='gameClick(game)' [innerHTML]="game.BUTTON_NAME"></button>
+
+  </ion-card>
+</ion-content>
+<style>
+
+</style>
+<ion-footer [ngClass]="footerClass">
+  <ion-toolbar>
+    <ion-title *ngIf="footerType=='REGISTER'"><a (click)="returnToLogin()">Зарегистрируйтесь</a> для продложения!</ion-title>
+    <ion-title *ngIf="footerType=='DOWNLOADLOG'">{{footerText}}</ion-title>
+    <ion-title *ngIf="footerType=='ERROR'">{{footerText}}</ion-title>
+  </ion-toolbar>
+</ion-footer>

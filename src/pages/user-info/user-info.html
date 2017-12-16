@@ -1,0 +1,44 @@
+<!--
+  Generated template for the UserInfo page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Игрок</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid width="100%">
+    <ion-row>
+      <ion-col width="10%"><p>Имя:</p></ion-col>
+      <ion-col><p [(ngModel)]="userName"></p></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width="10%"><p>Логин:</p></ion-col>
+      <ion-col><input [(ngModel)]="userLogin"/></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width="10%"><p>E-mail:</p></ion-col>
+      <ion-col><input [(ngModel)]="eMail">/></ion-col>
+    </ion-row>
+  </ion-grid>
+  <!--
+  <a data-role="button" onclick="Login.saveLogin()">Сохранить</a>
+  <h3>Промо-коды:</h3>
+  <div id="promoCodeList"></div>
+  <table width="100%">
+    <tr>
+      <td width="10%">Скидочный код:</td>
+      <td><input id="discountCode"/></td>
+    </tr>
+  </table>
+  <a data-role="button" onclick="Login.setDiscount()">Отправить</a>
+  <a data-role="button" onclick="MainInterface.logout()">Выйти</a>
+  -->
+</ion-content>

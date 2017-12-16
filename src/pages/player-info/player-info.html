@@ -1,0 +1,56 @@
+<!--
+  Generated template for the PlayerInfo page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar align-title="center">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Игрок</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Имя:</ion-label>
+    <ion-input disabled="true" [(ngModel)]="userName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Логин:</ion-label>
+    <ion-input [(ngModel)]="userLogin"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>EMail:</ion-label>
+    <ion-input [(ngModel)]="eMail"></ion-input>
+  </ion-item>
+  <button ion-button text-center color="Dark" (click)="saveLoginInfo()" outline>Сохранить информацию</button>
+  <h3>Промо-коды:</h3>
+  <ion-item>
+    <ion-label color="primary">Введите код:</ion-label>
+    <ion-input [(ngModel)]="promoCodeValue"></ion-input>
+    <button ion-button item-right clear icon-only (click)="setCodeClick()">
+      <ion-icon name="arrow-forward" dark></ion-icon>
+    </button>
+  </ion-item>
+  <ion-card *ngFor="let code of codes">
+    <ion-card-content>
+      <p><b>Скидочный код:</b> {{ code._CODE }}</p>
+      <p><b>На </b> {{ code._NAME }}</p>
+      <p><b>Размер скидки: </b> {{ code.DISCOUNT }}</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-item>
+    <button ion-button (click)="logout()">Выйти</button>
+  </ion-item>
+    <!--ion-row>
+      <ion-col width="10%"><p>Имя:</p></ion-col>
+      <ion-col><p [(ngModel)]="userName"></p></ion-col>
+    </ion-row-->
+
+</ion-content>

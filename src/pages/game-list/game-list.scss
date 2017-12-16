@@ -1,0 +1,42 @@
+page-game-list {
+
+}
+.hiddenFooter{
+  height: 0px;
+}
+.errorFooter{
+  transition-property: height;
+  transition-duration: 0.3s;
+  height: 56px;
+
+
+}
+.errorFooter .toolbar-background{
+  background-color: red;
+}
+.errorFooter .toolbar-title{
+  color: white;
+  font-size: 12px;
+}
+.errorFooter .toolbar-title a{
+  color: white;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+
+.logFooter{
+  transition-property: height;
+  transition-duration: 0.3s;
+  height: 56px;
+
+}
+.logFooter .toolbar-background{
+  background-color: green;
+}
+.logFooter .toolbar-title{
+  color: white;
+  font-size: 12px;
+}
+
+
